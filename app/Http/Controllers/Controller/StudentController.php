@@ -11,7 +11,7 @@ class StudentController extends Controller
     $data=[
         'code'=>$code,
         'msg'=>$msg,
-        'date'=>$date
+        'data'=>$data
     ];
     return json_encode($data);
 }
