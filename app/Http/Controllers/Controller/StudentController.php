@@ -41,8 +41,14 @@ class StudentController extends Controller
     $res = json_decode(curl_exec($curl),true);
     curl_close($curl);
     
-    var_dump($res);exit;
-    return $this->getBack('1','ok',$res);
+    $openid = $res['openid'];
+    $res1 = StudentModel::where('stu_openid',$openid)->first();
+    if(!empty($res1)){
+    	return $this->getBack('1','登陆成功',$res);
+    }else{
+    	return $this->getBack('2','登陆失败','');
+    }
+   
 
   }
 
