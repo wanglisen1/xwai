@@ -6,6 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Model\StudentModel;
 class StudentController extends Controller
 {
+	//返回提示信息
+	public function getBack($code='',$msg='',$date=''){
+    $data=[
+        'code'=>$code,
+        'msg'=>$msg,
+        'date'=>$date
+    ];
+    return json_encode($data);
+}
+
 	public function stucode(Request $request){
 
     $code = $_GET['code'];
