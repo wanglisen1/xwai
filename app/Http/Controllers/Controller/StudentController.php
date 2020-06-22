@@ -7,14 +7,11 @@ use App\Model\StudentModel;
 class StudentController extends Controller
 {
 	public function stucode(Request $request){
-		$code = $_GET['code'];//小程序传来的code值
-        $url = 'https://api.weixin.qq.com/sns/jscode2session?appid="wx69cbb9e821210abb"&secret="19cddecc89314ab3b31f9976cedc41f6"&js_code=' . $code . '&grant_type=authorization_code';
-        //yourAppid为开发者appid.appSecret为开发者的appsecret,都可以从微信公众平台获取；
-        $info = file_get_contents($url);//发送HTTPs请求并获取返回的数据，推荐使用curl
-        $json = json_decode($info);//对json数据解码
-        $arr = get_object_vars($json);
-        //dump($arr);die;
-        $openid = $arr['openid'];
+        $code = $_GET['code'];//获取code
+		$weixin =  file_get_contents("https://api.weixin.qq.com/sns/oauth2/access_token?appid=	wx69cbb9e821210abb&secret=19cddecc89314ab3b31f9976cedc41f6&code=".$code."&grant_type=authorization_code");//通过code换取网页授权access_token
+			$jsondecode = json_decode($weixin); //对JSON格式的字符串进行编码
+			$array = get_object_vars($jsondecode);//转换成数组
+			$openid = $array['openid'];//输出openid
 		return $openid;
-	}
+		}
 }
