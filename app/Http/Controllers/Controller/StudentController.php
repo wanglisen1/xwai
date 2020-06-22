@@ -8,7 +8,10 @@ class StudentController extends Controller
 {
 	public function stucode(Request $request){
 
+	 $data = $request->get();
+	var_dump($data);exit;
     $code = $_GET['code'];
+   
     //配置appid
     $appid = !empty($_GET['appid']) ? $_GET['appid'] : 'wx69cbb9e821210abb ';
     //配置appscret
