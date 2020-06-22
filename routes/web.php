@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//hs全部课程
+Route::any('/cataloglist','Controller\CatalogController@cataloglist');
