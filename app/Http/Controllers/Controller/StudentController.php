@@ -8,8 +8,6 @@ class StudentController extends Controller
 {
 	public function stucode(Request $request){
 
-	 $data = $request->get();
-	var_dump($data);exit;
     $code = $_GET['code'];
    
     //配置appid
@@ -34,4 +32,5 @@ class StudentController extends Controller
     curl_close($curl);
 
     return $this->getBack('1','ok',$res);
+}
 }
