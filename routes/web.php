@@ -18,4 +18,6 @@ Route::get('/', function () {
 //hs全部课程
 Route::any('/cataloglist','Controller\CatalogController@cataloglist');
 //家长登陆
-Route::any('/studentlogin','Controller\CatalogController@studentlogin');
+Route::any('/studentlogin','Controller\StudentController@studentlogin');
+//获取openid
+Route::any('/stucode','Controller\StudentController@stucode');
