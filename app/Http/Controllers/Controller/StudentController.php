@@ -41,7 +41,7 @@ class StudentController extends Controller
     $res = json_decode(curl_exec($curl),true);
     curl_close($curl);
 
-    return $res['data'];
+    return $res['date'];
   }
 
 
