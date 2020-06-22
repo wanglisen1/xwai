@@ -52,7 +52,7 @@ class StudentController extends Controller
 
   }
 
-  public function styloginpwd(Request $request){
+  public function stuloginpwd(Request $request){
   	 	$tel = $request->input('tel');
         $password = $request->input('pwd');
         $data1=StudentModel::where('tel',$tel)->first();

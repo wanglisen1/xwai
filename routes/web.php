@@ -22,4 +22,4 @@ Route::any('/studentlogin','Controller\StudentController@studentlogin');
 //微信登陆
 Route::any('/stucode','Controller\StudentController@stucode');
 //账号密码登陆
-Route::any('/styloginpwd','Controller\StudentController@styloginpwd');
+Route::any('/stuloginpwd','Controller\StudentController@stuloginpwd');
