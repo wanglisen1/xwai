@@ -56,7 +56,7 @@ class StudentController extends Controller
   	 	$tel = $request->input('tel');
         $pwd = $request->input('pwd');
         $data1=StudentModel::where('stu_tel',$tel)->first();
-         if(!empty($data['tel'])){
+         if(!empty($data1['stu_tel'])){
          	 if($data['stu_pwd'] === $pwd) {
          	 	$res2 = [
          	 		'openid' => $data1['stu_openid'],
