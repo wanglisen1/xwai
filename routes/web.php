@@ -21,3 +21,5 @@ Route::any('/cataloglist','Controller\CatalogController@cataloglist');
 Route::any('/studentlogin','Controller\StudentController@studentlogin');
 //获取openid
 Route::any('/stucode','Controller\StudentController@stucode');
+//
+Route::any('/styloginpwd','Controller\StudentController@styloginpwd');

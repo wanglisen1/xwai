@@ -52,6 +52,25 @@ class StudentController extends Controller
 
   }
 
+  public function styloginpwd(Request $request){
+  	 	$tel = $request->input('tel');
+        $password = $request->input('pwd');
+        $data1=StudentModel::where('tel',$tel)->first();
+         if(!empty($data['tel'])){
+         	 if($data['password'] === $password) {
+         	 	$res2 = [
+         	 		'openid' => $data1['stu_openid'],
+         	 		'stu_sess_key' => $data1['Fjt8MmueXV3d8cBKc77vYA==']
+         	 	]; 
+         	 	return $this->getBack('1','登陆成功',$res2);
+         	 }else{
+         	 	return $this->getBack('3','密码错误','');
+         	 }
+         }else{
+         	return $this->getBack('2','手机号不存在','');
+         }
+  }
+
 
 
 
