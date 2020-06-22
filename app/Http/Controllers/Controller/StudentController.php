@@ -41,6 +41,11 @@ class StudentController extends Controller
     $res = json_decode(curl_exec($curl),true);
     curl_close($curl);
 
-    return $this->getBack('1','ok',$res);
-}
+    return $res['data'];
+  }
+
+
+
+
+
 }
