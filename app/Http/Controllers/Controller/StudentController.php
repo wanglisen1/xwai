@@ -7,13 +7,12 @@ use App\Model\StudentModel;
 class StudentController extends Controller
 {
 	public function stucode(Request $request){
-	$data = request()->post();
 
-    $code = !empty($data['code']) ? $data['code'] : '';
+    $code = $_GET['code'];
     //配置appid
-    $appid = !empty($data['appid']) ? $data['appid'] : 'wx69cbb9e821210abb ';
+    $appid = !empty($_GET['appid']) ? $_GET['appid'] : 'wx69cbb9e821210abb ';
     //配置appscret
-    $secret = !empty($data['secret']) ? $data['secret'] : '19cddecc89314ab3b31f9976cedc41f6';
+    $secret = !empty($_GET['secret']) ? $_GET['secret'] : '19cddecc89314ab3b31f9976cedc41f6';
 
     if(empty($code)||empty($appid)||empty($secret)){
         return $this->getBack('0','非法请求','');
