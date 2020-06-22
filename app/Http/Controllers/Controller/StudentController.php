@@ -7,7 +7,7 @@ use App\Model\StudentModel;
 class StudentController extends Controller
 {
 	//返回提示信息
-	public function getBack($code='',$msg='',$date=''){
+	public function getBack($code='',$msg='',$data1=''){
     $data=[
         'code'=>$code,
         'msg'=>$msg,
