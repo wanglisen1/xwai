@@ -40,7 +40,8 @@ class StudentController extends Controller
     curl_setopt($curl, CURLOPT_URL, $api);
     $res = json_decode(curl_exec($curl),true);
     curl_close($curl);
-    $openid = $res['openid'];exit;
+    
+    var_dump($res);exit;
     return $this->getBack('1','ok',$res);
 
   }
