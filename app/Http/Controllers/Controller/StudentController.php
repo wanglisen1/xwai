@@ -54,10 +54,10 @@ class StudentController extends Controller
 
   public function stuloginpwd(Request $request){
   	 	$tel = $request->input('tel');
-        $password = $request->input('pwd');
-        $data1=StudentModel::where('tel',$tel)->first();
+        $pwd = $request->input('pwd');
+        $data1=StudentModel::where('stu_tel',$tel)->first();
          if(!empty($data['tel'])){
-         	 if($data['password'] === $password) {
+         	 if($data['stu_pwd'] === $pwd) {
          	 	$res2 = [
          	 		'openid' => $data1['stu_openid'],
          	 		'session_key' => $data1['stu_sess_key']
