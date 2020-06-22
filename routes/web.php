@@ -19,7 +19,7 @@ Route::get('/', function () {
 Route::any('/cataloglist','Controller\CatalogController@cataloglist');
 //家长登陆
 Route::any('/studentlogin','Controller\StudentController@studentlogin');
-//获取openid
+//微信登陆
 Route::any('/stucode','Controller\StudentController@stucode');
-//
+//账号密码登陆
 Route::any('/styloginpwd','Controller\StudentController@styloginpwd');

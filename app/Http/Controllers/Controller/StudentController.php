@@ -60,7 +60,7 @@ class StudentController extends Controller
          	 if($data['password'] === $password) {
          	 	$res2 = [
          	 		'openid' => $data1['stu_openid'],
-         	 		'stu_sess_key' => $data1['Fjt8MmueXV3d8cBKc77vYA==']
+         	 		'session_key' => $data1['stu_sess_key']
          	 	]; 
          	 	return $this->getBack('1','登陆成功',$res2);
          	 }else{
