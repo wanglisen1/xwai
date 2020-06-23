@@ -57,7 +57,7 @@ class StudentController extends Controller
     $res1 = StudentModel::where('stu_openid',$openid)->first();
     if(!empty($res1)){
     	 			session_start();
-                    $_SESSION["openid"]=$openid;
+                    $_SESSION["uid"]=$data2['stu_openid'];
     	return $this->getBack('1','登陆成功',$res);
     }else{
     	return $this->getBack('2','登陆失败','');
