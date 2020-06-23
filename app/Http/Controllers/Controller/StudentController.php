@@ -22,7 +22,7 @@ class StudentController extends Controller
 	//验证用户是否过期
 	public function session(){
 		 session_start();
-        if(empty($_SESSION["openid"])){
+        if(empty($_SESSION["uid"])){
         	return $this->getBack('0','身份已过期，请重新登陆','');
         }
 	}
@@ -78,7 +78,7 @@ class StudentController extends Controller
          	 		'session_key' => $data2['stu_sess_key']
          	 	]; 
          	 		session_start();
-                    $_SESSION["openid"]=$data2['stu_openid'];
+                    $_SESSION["uid"]=$data2['stu_openid'];
          	 	return $this->getBack('1','登陆成功',$res2);
          	 }else{
          	 	return $this->getBack('3','密码错误','');
@@ -90,11 +90,9 @@ class StudentController extends Controller
 
   	//小问模块展示（家长端）
   public function stuxw(Request $request){
-  	echo 111111;exit;
   		$this->session();
-
-  		echo $_SESSION["openid"];
-  		$res = StudentModel::where('stu_openid',$_SESSION["openid"])->first();
+  		echo $_SESSION["uid"];
+  		$res = StudentModel::where('stu_openid',$_SESSION["uid"])->first();
   		$uid = $res['stu_id'];
   		$res1 = ChapterModel::where('chap_stu',$uid)->first();
   		$ywsub = CatalogModel::whereIn('cata_id',$res1['chap_yw'])->get();
