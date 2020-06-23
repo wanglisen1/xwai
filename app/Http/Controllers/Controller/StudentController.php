@@ -91,6 +91,7 @@ class StudentController extends Controller
   	//小问模块展示（家长端）
   public function stuxw(Request $request){
   		$this->session();
+  		echo $_SESSION["openid"];
   		$res = StudentModel::where('stu_openid',$_SESSION["openid"])->first();
   		$uid = $res['stu_id'];
   		$res1 = ChapterModel::where('chap_stu',$uid)->first();
@@ -105,8 +106,8 @@ class StudentController extends Controller
   			'pdsub' => $pdsub
   		];
 
-  		$ywseason = array_unique($ywsub['cata_season']);
-  		print_r($ywseason);exit;
+  		//$ywseason = array_unique($ywsub['cata_season']);
+  		print_r($ywsub);exit;
   }
 
 
