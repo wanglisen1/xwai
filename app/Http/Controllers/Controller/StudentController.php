@@ -73,12 +73,14 @@ class StudentController extends Controller
         $data2=StudentModel::where('stu_tel',$tel)->first();
          if(!empty($data2['stu_tel'])){
          	 if($data2['stu_pwd'] === $pwd) {
-         	 	$res2 = [
-         	 		'openid' => $data2['stu_openid'],
-         	 		'session_key' => $data2['stu_sess_key']
-         	 	]; 
+         	 	 
          	 		session_start();
                     $_SESSION["uid"]=$data2['stu_openid'];
+                    $res2 = [
+         	 		'openid' => $data2['stu_openid'],
+         	 		'session_key' => $data2['stu_sess_key'],
+         	 		'session' => $_SESSION["uid"]
+         	 	];
          	 	return $this->getBack('1','登陆成功',$res2);
          	 }else{
          	 	return $this->getBack('3','密码错误','');
