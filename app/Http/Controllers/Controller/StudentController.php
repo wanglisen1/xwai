@@ -99,10 +99,10 @@ class StudentController extends Controller
   		$kbsub = CatalogModel::whereIn('cata_id',$res1['chap_kb'])->get();
   		$pdsub = CatalogModel::whereIn('cata_id',$res1['chap_pd'])->get();
   		$subject = [
-  			'ywsub' = $ywsub,
-  			'sxsub' = $sxsub,
-  			'kbsub' = $kbsub,
-  			'pdsub' = $pdsub
+  			'ywsub' => $ywsub,
+  			'sxsub' => $sxsub,
+  			'kbsub' => $kbsub,
+  			'pdsub' => $pdsub
   		];
 
   		$ywseason = array_unique($ywsub['cata_season']);
