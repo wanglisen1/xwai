@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\StudentModel;
+use App\Model\ChapterModel;
+use App\Model\CatalogModel;
 class StudentController extends Controller
 {
+
 	//返回提示信息
 	public function getBack($code='',$msg='',$data1=''){
     $data=[
@@ -16,6 +19,15 @@ class StudentController extends Controller
     return json_encode($data);
 }
 
+	//验证用户是否过期
+	public function session(){
+		 session_start();
+        if(empty($_SESSION["openid"])){
+        	return $this->getBack('0','身份已过期，请重新登陆','');
+        }
+	}
+
+	//微信登陆
 	public function stucode(Request $request){
 
     $code = $_GET['code'];
@@ -44,6 +56,8 @@ class StudentController extends Controller
     $openid = $res['openid'];
     $res1 = StudentModel::where('stu_openid',$openid)->first();
     if(!empty($res1)){
+    	 			session_start();
+                    $_SESSION["openid"]=$openid;
     	return $this->getBack('1','登陆成功',$res);
     }else{
     	return $this->getBack('2','登陆失败','');
@@ -52,6 +66,7 @@ class StudentController extends Controller
 
   }
 
+  	//账号密码登陆
   public function stuloginpwd(Request $request){
   	 	$tel = $request->input('tel');
         $pwd = $request->input('pwd');
@@ -62,6 +77,8 @@ class StudentController extends Controller
          	 		'openid' => $data2['stu_openid'],
          	 		'session_key' => $data2['stu_sess_key']
          	 	]; 
+         	 		session_start();
+                    $_SESSION["openid"]=$data2['stu_openid'];
          	 	return $this->getBack('1','登陆成功',$res2);
          	 }else{
          	 	return $this->getBack('3','密码错误','');
@@ -71,8 +88,26 @@ class StudentController extends Controller
          }
   }
 
+  	//小问模块展示（家长端）
+  public function stuxw(Request $request){
+  		$this->session();
+  		$res = StudentModel::where('stu_openid',$_SESSION["openid"])->first();
+  		$uid = $res['stu_id'];
+  		$res1 = ChapterModel::where('chap_stu',$uid)->first();
+  		$ywsub = CatalogModel::whereIn('cata_id',$res1['chap_yw'])->get();
+  		$sxsub = CatalogModel::whereIn('cata_id',$res1['chap_sx'])->get();
+  		$kbsub = CatalogModel::whereIn('cata_id',$res1['chap_kb'])->get();
+  		$pdsub = CatalogModel::whereIn('cata_id',$res1['chap_pd'])->get();
+  		$subject = [
+  			'ywsub' = $ywsub,
+  			'sxsub' = $sxsub,
+  			'kbsub' = $kbsub,
+  			'pdsub' = $pdsub
+  		];
 
-
+  		$ywseason = array_unique($ywsub['cata_season']);
+  		print_r($ywseason);exit;
+  }
 
 
 }

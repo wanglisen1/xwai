@@ -4,9 +4,8 @@ namespace App\model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CatalogModel extends Model
+class ChapterModel extends Model
 {
     public $timestamps = false;
-    public $table = 'catalog';
+    public $table = 'chapter';
 }
-

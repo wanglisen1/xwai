@@ -23,3 +23,5 @@ Route::any('/studentlogin','Controller\StudentController@studentlogin');
 Route::any('/stucode','Controller\StudentController@stucode');
 //账号密码登陆
 Route::any('/stuloginpwd','Controller\StudentController@stuloginpwd');
+//小问模块展示（家长端）
+Route::any('/stuxw','Controller\StudentController@stuxw');
