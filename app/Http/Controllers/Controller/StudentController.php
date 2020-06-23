@@ -90,8 +90,9 @@ class StudentController extends Controller
 
   	//小问模块展示（家长端）
   public function stuxw(Request $request){
+  	echo 111111;exit;
   		$this->session();
-  		echo 111111;exit;
+
   		echo $_SESSION["openid"];
   		$res = StudentModel::where('stu_openid',$_SESSION["openid"])->first();
   		$uid = $res['stu_id'];
